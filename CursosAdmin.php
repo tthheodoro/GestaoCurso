@@ -41,27 +41,17 @@ include 'conexao.php';?>
 
 <button type="button" class="btn btn-primary">Adicionar Novo</button>
 
+
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="rectangular-bg"> 
-                        <div class="dropdown">
-                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                     Filtrar por
-                             </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#" onclick="filterTable('todos')">Todos</a>
-                                <a class="dropdown-item" href="#" onclick="filterTable('curso1')">Aluno</a>
-                                <a class="dropdown-item" href="#" onclick="filterTable('curso2')">Docente</a>
-                                <!-- Adicione mais opções de filtro conforme necessário -->
-                            </div>
-                    </div>
                         <section class="intro mt-3">
-                        <div class="table-responsive bg-white">
-                            <table class="table mb-0" style="border-collapse: collapse; width: 100%;">
-                                <thead>
+                            <div class="table-responsive bg-white">
+                                <table id="tabela-cursos" class="table mb-0" style="border-collapse: collapse; width: 100%;">
+                                    <thead>
                                     <tr style="border-bottom: 1px solid #ccc;">
                                         <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
@@ -69,9 +59,9 @@ include 'conexao.php';?>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Editar</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Eliminar</th>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+                                    </thead>
+                                    <tbody> 
+                                    <?php 
                                     try {
                                         // Exemplo de consulta SQL
                                         $sql = "SELECT * FROM curso";
@@ -82,13 +72,13 @@ include 'conexao.php';?>
                                         if ($result && $result->rowCount() > 0) {
                                             // Exibe os resultados
                                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                                echo '<tr style="border-bottom: 1px solid #ccc;">';
-                                                echo '<td style="border-right: 1px solid #ccc; color: #666666;">' . $row['IdCurso'] . '</td>';
+                                                echo '<tr style="border-bottom: 1px solid #ccc;">'; 
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['idCurso'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
                                                 // Botões de edição e exclusão
-                                                echo '<td style="border-right: 1px solid #ccc;"><a href="PaginaUtilizadorAdminEditar.php?id=' . $row['IdCurso'] . '"><img src="pen.svg"/></a></td>';
-                                                echo '<td><a href="PaginaUtilizadorAdminEliminar.php?id=' . $row['IdCurso'] . '"><img src="trash.svg"/></a></td>';
+                                                echo '<td style="border-right: 1px solid #ccc;"><a href="PaginaUtilizadorAdminEditar.php?id=' . $row['idCurso'] . '"><img src="pen.svg"/></a></td>';
+                                                echo '<td><a href="PaginaUtilizadorAdminEliminar.php?id=' . $row['idCurso'] . '"><img src="trash.svg"/></a></td>';
                                                 echo '</tr>';
                                             }
                                             
@@ -99,11 +89,13 @@ include 'conexao.php';?>
                                         // Em caso de erro na conexão ou na consulta, exibe o erro
                                         echo '<tr><td colspan="5" style="border-right: 1px solid #ccc;">Erro na consulta: ' . $e->getMessage() . '</td></tr>';
                                     }
-                                    ?>
-                                </tbody>
-                            </table>
+                                      ?> 
+
+                                </tbody> 
+                                </table>
+                            </div>
+                            <section class="intro mt-3">
                         </div>
-                        <section class="intro mt-3">
                     </div>
                 </div>
             </div>

@@ -39,23 +39,8 @@
 <?php
 include 'conexao.php';?>
 
-<button type="button" class="btn btn-primary">Adicionar Novo</button>
-
-<script>
- function filterTable(tipo) {
-    var rows = document.querySelectorAll("tbody tr");
-    rows.forEach(function(row) {
-        var tipoUtilizador = parseInt(row.querySelector("td:nth-child(6)").innerText.trim()); // assumindo que tipoUtilizador está na sexta coluna
-        if (tipo === 'todos' || tipoUtilizador === parseInt(tipo)) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-    });
-}
 
 
-</script>
 
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
@@ -63,38 +48,22 @@ include 'conexao.php';?>
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="rectangular-bg"> 
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Filtrar por
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#" onclick="filterTable('todos')">Todos</a>
-                                <a class="dropdown-item" href="#" onclick="filterTable(1)">Aluno</a>
-                                <a class="dropdown-item" href="#" onclick="filterTable(2)">Docente</a>
-                                <a class="dropdown-item" href="#" onclick="filterTable(3)">Administrador</a>
-                                <!-- Adicione mais opções de filtro conforme necessário -->
-                            </div>
-                        </div>
                         <section class="intro mt-3">
                             <div class="table-responsive bg-white">
                                 <table id="tabela-cursos" class="table mb-0" style="border-collapse: collapse; width: 100%;">
                                     <thead>
-                                        <tr style="border-bottom: 1px solid #ccc;">
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Morada</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Email</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Password</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">tipoUtilizador</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Editar</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Eliminar</th>
-                                        </tr>
+                                    <tr style="border-bottom: 1px solid #ccc;">
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Descrição</th>
+                             
+                                    </tr>
                                     </thead>
                                     <tbody> 
                                     <?php 
                                     try {
                                         // Exemplo de consulta SQL
-                                        $sql = "SELECT * FROM utilizadores";
+                                        $sql = "SELECT * FROM curso";
                                         // Executa a consulta
                                         $result = $conn->query($sql);
 
@@ -103,15 +72,10 @@ include 'conexao.php';?>
                                             // Exibe os resultados
                                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['idUtilizador'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['idCurso'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Morada'] . '</td>';
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Email'] . '</td>';
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Password'] . '</td>';
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['tipoUtilizador'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
                                                 // Botões de edição e exclusão
-                                                echo '<td style="border-right: 1px solid #ccc;"><a href="PaginaUtilizadorAdminEditar.php?id=' . $row['idUtilizador'] . '"><img src="pen.svg"/></a></td>';
-                                                echo '<td><a href="PaginaUtilizadorAdminEliminar.php?id=' . $row['idUtilizador'] . '"><img src="trash.svg"/></a></td>';
                                                 echo '</tr>';
                                             }
                                             
@@ -138,6 +102,19 @@ include 'conexao.php';?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function filterTable(category) {
+        var rows = document.querySelectorAll("tbody tr");
+        rows.forEach(function(row) {
+            var course = row.querySelector("td:nth-child(2)").innerText; // assuming course name is in the second column
+            if (category === 'todos' || course === category) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
+</script>
 
 <?php 
 $conn = null;
