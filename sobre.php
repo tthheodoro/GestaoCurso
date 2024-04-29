@@ -12,9 +12,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
+
+        <ul class="navbar-nav mx-auto">     
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.php">Página Principal
+
             <ul class="navbar-nav mx-auto">     
                 <li class="nav-item">
                     <a class="nav-link active" href="paginaprincipal.php">Página Principal
+
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
@@ -25,7 +31,11 @@
                     <a class="nav-link" href="login.php">Entrar</a>
                 </li>
                 <li class="nav-item">
+
+                    <a class="nav-link" href="sobre.php">Sobre nós</a>
+
                     <a class="nav-link" href="#">Sobre nós</a>
+
                 </li>
             </ul>
         </div>
