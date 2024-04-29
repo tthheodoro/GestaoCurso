@@ -88,7 +88,11 @@
   --bs-body-line-height: 1.5;
   --bs-body-color: #7b8ab8;
   --bs-body-color-rgb: 123, 138, 184;
+
   --bs-body-bg: #ffffff;
+
+  --bs-body-bg: #d9e3f1;
+
   --bs-body-bg-rgb: 217, 227, 241;
   --bs-emphasis-color: #000;
   --bs-emphasis-color-rgb: 0, 0, 0;
@@ -12102,9 +12106,15 @@ textarea.form-control-lg {
   position: relative;
   color: #7b8ab8;
   border-radius: 50rem;
+
   background-color: #ffffff;
   border: none;
   /*box-shadow: 5px 5px 10px rgba(55, 94, 148, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);*/
+
+  background-color: #d9e3f1;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(55, 94, 148, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+
   transition: background-color 0.15s ease-in-out, border 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 .btn:focus {
@@ -12823,10 +12833,12 @@ table th {
 tbody td {
   font-weight: 500;
   color: #999999;
+
 }
 
 .rectangular-bg {
   background-color: #243341;
   padding: 30px; /* Ajuste o preenchimento conforme necessário */
   border-radius: 10px; /* Adiciona bordas arredondadas ao retângulo */
+
 }
