@@ -12,11 +12,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav mx-auto">     
+
+        <ul class="navbar-nav mx-auto">     
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Página Principal
-                        <span class="visually-hidden">(current)</span>
-                    </a>
+                    <a class="nav-link active" href="index.php">Página Principal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cursos.php">Cursos</a>
@@ -36,7 +35,7 @@
 <h3>Escola Alfredo</h3>
 
 <div class="card mb-3">
-  <h2 class="card-header">Bem Vindo</h2>
+  <h2 class="card-header">Sobre nós</h2>
   <div class="card-body">
   </div>
   <svg xmlns="C:\xampp\htdocs\cursos\img/curso.jpg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">

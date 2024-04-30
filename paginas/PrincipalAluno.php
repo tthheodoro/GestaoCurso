@@ -12,36 +12,20 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
-
-        <ul class="navbar-nav mx-auto">     
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Página Principal
-
             <ul class="navbar-nav mx-auto">     
                 <li class="nav-item">
-                    <a class="nav-link active" href="paginaprincipal.php">Página Principal
-
+                    <a class="nav-link active" href="index.php">Página Principal
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-
-                    <a class="nav-link" href="cursos.php">Cursos</a>
+                    <a class="nav-link" href="CursosUtilizador.php">Cursos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Entrar</a>
+                    <a class="nav-link" href="InscricoesAluno.php">Inscrições</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="sobre.php">Sobre nós</a>
-
-                    <a class="nav-link" href="index.php">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Entrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre nós</a>
-
+                    <a class="nav-link" href="DadosPessoaisAluno.php">Dados Pessoais</a>
                 </li>
             </ul>
         </div>
@@ -49,10 +33,10 @@
 </nav>
 </br></br>
 <ul class="mx-auto">
-<h3>MIAUUU</h3>
+<h3>Escola Alfredo</h3>
 
 <div class="card mb-3">
-  <h2 class="card-header">Junte-se a nós</h2>
+  <h2 class="card-header">Bem Vindo</h2>
   <div class="card-body">
   </div>
   <svg xmlns="C:\xampp\htdocs\cursos\img/curso.jpg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">

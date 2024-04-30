@@ -1,6 +1,7 @@
 <?php
 // Inclua o arquivo de conexão com o banco de dados
-include 'conexao.php';
+session_start();
+include ("../basedados/basedados.h");
 
 // Definir variável de mensagem de erro
 $mensagem_erro = '';
@@ -13,29 +14,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Nome = $_POST['Nome'];
         $Password = $_POST['Password'];
 
-        $sql = "SELECT * FROM utilizadores WHERE Nome=:nome AND Password=:password";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nome', $Nome);
-        $stmt->bindParam(':password', $Password);
-        $stmt->execute();
-
+        $sql = "SELECT * FROM utilizadores WHERE Nome=\"$Nome\" AND Password=\"$Password\"";
+        $result = mysqli_query($conn, $sql);
+        
         // Verifique se há correspondências de usuário na consulta
-        if ($stmt->rowCount() > 0) {
-            // Obtenha os detalhes do usuário
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            // Determine o tipo de usuário (aluno, professor, admin) com base na coluna 'tipoUtilizador' na tabela de usuários
+        if (mysqli_affected_rows($conn) == 1 ) {
+            $row = mysqli_fetch_array($result);
+
             $role = $row['tipoUtilizador'];
+            $_SESSION['tipoUtilizador'] = $role;
+            $_SESSION['idUtilizador'] = $row['idUtilizador'];
             echo $role;
             // Redirecionar com base no tipo de usuário
-            if ($role === 1) {
+            if ($role == 1) {
                 // Redirecionar para a página do aluno
                 header("Location: PrincipalAluno.php");
                 exit();
-            } elseif ($role === 2) {
+            } elseif ($role == 2) {
                 // Redirecionar para a página do professor
                 header("Location: PrincipalDocente.php");
                 exit();
-            } elseif ($role === 3) {
+            } elseif ($role == 3) {
                 // Redirecionar para a página de administração
                 header("Location: PrincipalAdmin.php");
                 exit();
