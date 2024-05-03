@@ -37,7 +37,8 @@
 <h3>Cursos de Formação</h3>
 
 <?php
-include 'conexao.php';?>
+session_start();
+include ("../basedados/basedados.h");?>
 
 <button type="button" class="btn btn-primary">Adicionar Novo</button>
 
@@ -53,8 +54,6 @@ include 'conexao.php';?>
         }
     });
 }
-
-
 </script>
 
 <section class="intro mt-5">
@@ -96,12 +95,12 @@ include 'conexao.php';?>
                                         // Exemplo de consulta SQL
                                         $sql = "SELECT * FROM utilizadores";
                                         // Executa a consulta
-                                        $result = $conn->query($sql);
+                                        $result = mysqli_query($conn, $sql);
 
                                         // Verifica se a consulta retornou resultados
-                                        if ($result && $result->rowCount() > 0) {
+                                        if ($result) {
                                             // Exibe os resultados
-                                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                            while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['idUtilizador'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';

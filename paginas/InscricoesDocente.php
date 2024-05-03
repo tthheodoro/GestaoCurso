@@ -20,16 +20,18 @@ include ("../paginas/NavBar.html");?>
                                 <table id="tabela-cursos" class="table mb-0" style="border-collapse: collapse; width: 100%;">
                                     <thead>
                                     <tr style="border-bottom: 1px solid #ccc;">
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Descrição</th>                             
+                                        <th scope="col" style="border-right: 1px solid #ccc;">IdCurso</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">IdUtilizador</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">IdInscricao</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Email</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Informação</th>                             
                                     </tr>
                                     </thead>
                                     <tbody> 
                                     <?php                                   
                                     try {
                                         // Exemplo de consulta SQL
-                                        $sql = "SELECT * FROM curso";
+                                        $sql = "SELECT * FROM inscricao";
                                         // Executa a consulta
                                         $result = mysqli_query($conn, $sql);
 
@@ -38,13 +40,16 @@ include ("../paginas/NavBar.html");?>
                                             // Exibe os resultados
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['idCurso'] . '</td>';
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdCurso'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdUtilizador'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdInscricao'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['email'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['informacao'] . '</td>';
                                                 // Botões de edição e exclusão
-                                                
-                                                echo '<td style="border-right: 1px solid #ccc;">';
-                                                echo '<a href="AlunoInscreverCurso.php?IdCurso=' . $row['idCurso'] . '"><button>Inscrever</button></a>';
+                                                echo '<td style="border-right: 1px solid #ccc;">';  
+                                                echo '<a href="DocenteEditarInscricoes.php?IdInscricao=' . $row['IdInscricao'] . '"><button>Editar</button></a>';  
+                                                //FALTA FAZER
+                                                echo '<a><button>Apagar</button></a>';          
                                                 echo '</tr>';
                                                 echo '</td>';
                                             }

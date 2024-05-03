@@ -19,10 +19,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cursos.php">Cursos</a>
+                    <a class="nav-link" href="InscricoesDocente.php">Gestão Inscrições</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Entrar</a>
+                    <a class="nav-link" href="cursos.php">Cursos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="sobre.php">Sobre nós</a>

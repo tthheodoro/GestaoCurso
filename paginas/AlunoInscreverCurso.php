@@ -3,21 +3,8 @@
 <head>
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
-    <script>
-        // Função para ler parâmetros da URL
-        function obterParametroUrl(nome) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(nome);
-        }
-
-        // Função para preencher a label com o idCurso da URL
-        function preencherIdCurso() {
-            const idCurso = obterParametroUrl('idCurso');
-            document.getElementById('idCursoSelecionado').innerText = idCurso;
-        }
-    </script>
 </head>
-<body onload="preencherIdCurso()">
+<body>
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">ALF</a>
@@ -25,7 +12,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
      <div class="collapse navbar-collapse" id="navbarColor02">
-
         <ul class="navbar-nav mx-auto">     
                 <li class="nav-item">
                     <a class="nav-link active" href="PrincipalAluno.php">Página Principal</a>
@@ -41,21 +27,27 @@
     </div>
 </nav>
 <div>
-    <!-- Formulário para o Curso -->
     </br>
-    <form>
+    <form method="POST" action="ReceberInscricaoDocente.php">
         <div class="form-group">
             <label for="idCursoSelecionado">Curso Selecionado:</label>
-            <label id="idCursoSelecionado"></label>
+            <?php
+            if (isset($_GET['IdCurso'])) {
+                $idCursoSelecionado = $_GET['IdCurso'];
+                echo '<input type="text" class="form-control" id="IdCurso" name="idCursoSelecionado" value="' . $idCursoSelecionado . '" readonly>';
+            } else {
+                echo '<input type="text" class="form-control" id="IdCurso" name="idCursoSelecionado" value="Nenhum curso selecionado" readonly>';
+            }
+            ?>
         </div> 
         </br>
         <div>
-        <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="exemplo@exemplo.com">
         </div>
         <div class="">
-            <label for="exampleTextarea" class="form-label mt-4">Comentário:</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            <label for="exampleTextarea" class="form-label mt-4">Informações Adicionais:</label>
+            <textarea class="form-control" name="informacao" id="exampleTextarea" rows="3" placeholder="Nota de Curso, idade, etc..."></textarea>
         </div>
     </br>
         <button type="submit" class="btn btn-primary">Enviar</button>

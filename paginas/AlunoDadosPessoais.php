@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
              <ul class="navbar-nav mx-auto">     
                 <li class="nav-item">
-                    <a class="nav-link active" href="PaginaPrincipalAluno.php">Página Principal
+                    <a class="nav-link active" href="PrincipalAluno.php">Página Principal
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
@@ -32,14 +32,14 @@
 </br></br>
 <ul class="mx-auto">
 <h3>Cursos de Formação</h3>
-
+ 
 <?php
 session_start();
 include ("../basedados/basedados.h");
+
+
+
 ?>
-
-
-
 
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
