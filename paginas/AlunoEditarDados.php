@@ -5,42 +5,39 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">ALF</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-     <div class="collapse navbar-collapse" id="navbarColor02">
 
-        <ul class="navbar-nav mx-auto">     
-                <li class="nav-item">
-                    <a class="nav-link active" href="PrincipalAluno.php">Página Principal</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="CursosUtilizador.php">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sobre.php">Sobre nós</a>
-                </li>
-        </ul>
-     </div>
-    </div>
-</nav>
+<?php
+session_start();
+include ("../basedados/basedados.h");
+include ("../paginas/NavBar.html");
+$IdUtilizador = $_GET['IdUtilizador'];
+$sql = "SELECT * FROM utilizadores WHERE IdUtilizador=$IdUtilizador";
+
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+
+?>
 <div>
     <!-- Formulário Editar -->
     </br>
-    <form>
+    <form action="AtualizarDadosAluno.php" method="POST">
         </br>
+        <div class="form-group">
+            <label for="IdUtilizador">Seu id:</label>
+            <?php
+                $IdUtilizador= $row ['IdUtilizador'];
+                echo '<input type="text" class="form-control" id="IdUtilizador" name="IdUtilizador" value="' . $IdUtilizador . '" readonly>';      
+            ?>
+        </div>
         <div>
-        <label for="exampleInputEmail1" class="form-label mt-4">Nome:</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome">
+            <label for="Nome" class="form-label mt-4">Nome:</label>
+            <input type="text" name="Nome" class="form-control" id="Nome" placeholder="Nome" value="<?php echo $row['Nome']; ?>">
         </div>
-        <div class="">
-            <label for="exampleTextarea" class="form-label mt-4">Password:</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        <div>
+            <label for="Password" class="form-label mt-4">Password:</label>
+            <input type="password" name="Password" class="form-control" id="Password" placeholder="Nova Password">
         </div>
-    </br>
+        </br>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>

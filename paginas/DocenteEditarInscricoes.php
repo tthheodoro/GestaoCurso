@@ -7,15 +7,13 @@
 <?php
 session_start();
 include ("../basedados/basedados.h");
-include ("../paginas/NavBar.html");
+include ("../paginas/NavBarDocente.html");
 $IdInscricao = $_GET['IdInscricao'];
 $sql = "SELECT * FROM inscricao WHERE IdInscricao=$IdInscricao";
-
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
-
-?>
-<div>
+    ?>
+    <div>
     </br>
     <form method="POST" action="ReceberEditarDocente.php">
         <div class="form-group">
@@ -34,8 +32,11 @@ $row = mysqli_fetch_array($result);
             <label for="exampleTextarea" class="form-label mt-4">Informações Adicionais:</label>
             <textarea class="form-control" name="informacao" id="exampleTextarea" rows="3" placeholder="Nota de Curso, idade, etc..."><?php echo $row ['informacao'];?></textarea>
         </div>
+        <div class="">
+        <input type="hidden" name="IdInscricao" value="<?php echo $IdInscricao; ?>">
+        </div>
     </br>
-    <form method="GET" action="DocenteAtualizarInscricao.php">
+
     <!-- Campos para selecionar a inscrição a ser editada -->
     <button type="submit" class="btn btn-primary">Enviar</button>
 
@@ -43,7 +44,10 @@ $row = mysqli_fetch_array($result);
     </form>
 </div>
 
+
+
 </body>
+
 </html>
 
 </body>

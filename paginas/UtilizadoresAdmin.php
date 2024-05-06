@@ -6,32 +6,9 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">EAF</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor02">
-             <ul class="navbar-nav mx-auto">     
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Página Principal
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cursos.php">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">Entrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sobre.php">Sobre nós</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<?php
+include("../paginas/NavBarAdmin.html");
+?>
 </br></br>
 <ul class="mx-auto">
 <h3>Cursos de Formação</h3>
@@ -86,7 +63,7 @@ include ("../basedados/basedados.h");?>
                                             <th scope="col" style="border-right: 1px solid #ccc;">Password</th>
                                             <th scope="col" style="border-right: 1px solid #ccc;">tipoUtilizador</th>
                                             <th scope="col" style="border-right: 1px solid #ccc;">Editar</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Eliminar</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody> 
@@ -102,16 +79,19 @@ include ("../basedados/basedados.h");?>
                                             // Exibe os resultados
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['idUtilizador'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdUtilizador'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Morada'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Email'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Password'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['tipoUtilizador'] . '</td>';
                                                 // Botões de edição e exclusão
-                                                echo '<td style="border-right: 1px solid #ccc;"><a href="PaginaUtilizadorAdminEditar.php?id=' . $row['idUtilizador'] . '"><img src="pen.svg"/></a></td>';
-                                                echo '<td><a href="PaginaUtilizadorAdminEliminar.php?id=' . $row['idUtilizador'] . '"><img src="trash.svg"/></a></td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">';  
+                                                echo '<a href="AdminEditarUtilizador.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Ações</button></a>';
+                                                //FALTA FAZER
+                                                echo '<a><button>Apagar</button></a>';          
                                                 echo '</tr>';
+                                                echo '</td>';
                                             }
                                             
                                         } else {

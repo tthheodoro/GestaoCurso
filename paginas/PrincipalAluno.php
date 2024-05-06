@@ -25,7 +25,7 @@
                     <a class="nav-link" href="InscricoesAluno.php">Inscrições</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="DadosPessoaisAluno.php">Dados Pessoais</a>
+                    <a class="nav-link" href="AlunoDadosPessoais.php">Dados Pessoais</a>
                 </li>
             </ul>
         </div>

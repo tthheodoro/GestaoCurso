@@ -52,18 +52,17 @@ include ("../basedados/basedados.h");
                                 <table id="tabela-cursos" class="table mb-0" style="border-collapse: collapse; width: 100%;">
                                     <thead>
                                     <tr style="border-bottom: 1px solid #ccc;">
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Descrição</th>
-                             
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Password</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Opções</th>
                                     </tr>
                                     </thead>
                                     <tbody> 
                                     <?php 
                                     try {
                                         // Exemplo de consulta SQL
-                                        $id = $_SESSION['idUtilizador'];
-                                        $sql = "SELECT * FROM utilizadores WHERE idUtilizador = $id";
+                                        $id = $_SESSION['IdUtilizador'];
+                                        $sql = "SELECT * FROM utilizadores WHERE IdUtilizador = $id";
                                         // Executa a consulta
                                         $result = mysqli_query($conn, $sql);
                                         // Verifica se a consulta retornou resultados
@@ -75,8 +74,8 @@ include ("../basedados/basedados.h");
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Password'] . '</td>';
                                                 // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';
-                                                echo '<a href="AlunoEditarDados.php?idUtilizador=' . $row['Nome'] . '"><button>Editar</button></a>';
-                                                echo '<a href="AlunoApagarDados.php?idUtilizador=' . $row['Nome'] . '"><button>Apagar</button></a>';
+                                                echo '<a href="AlunoEditarDados.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Editar</button></a>';
+                                                echo '<a href="AlunoApagarDados.php?IdUtilizador=' . $row['Nome'] . '"><button>Apagar</button></a>';
                                                 echo '</tr>';
                                             }
                                             
@@ -87,8 +86,7 @@ include ("../basedados/basedados.h");
                                         // Em caso de erro na conexão ou na consulta, exibe o erro
                                         echo '<tr><td colspan="5" style="border-right: 1px solid #ccc;">Erro na consulta: ' . $e->getMessage() . '</td></tr>';
                                     }
-                                      ?> 
-
+                                    ?> 
                                 </tbody> 
                                 </table>
                             </div>
