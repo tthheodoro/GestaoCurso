@@ -38,12 +38,6 @@
                         <div class="error-box">
                             <p class="error-message"><?php echo $mensagem_erro; ?></p>
                         </div>
-                        <script>
-                            // Script para esconder a mensagem de erro após 5 segundos
-                            setTimeout(function() {
-                                document.querySelector('.error-box').style.display = 'none';
-                            }, 5000); // 5000 milissegundos = 5 segundos
-                        </script>
                     <?php endif; ?>
                     <!-- Adicionando o formulário -->
                     <form action="autenticacao.php" method="POST">

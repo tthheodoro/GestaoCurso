@@ -6,9 +6,10 @@
 </head>
 <body>
 <?php
-  session_start();
-  include ("../paginas/NavBarDocente.html");
-?>
+session_start();
+
+include ("../paginas/NavBarDocente.html");?>
+</br></br>
 <ul class="mx-auto">
 <h3>Escola Alfredo</h3>
 

@@ -5,32 +5,11 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">ALF</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav mx-auto">     
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Página Principal
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cursos.php">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">Entrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sobre.php">Sobre nós</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<?php
+session_start();
+
+include("../paginas/NavBarAdmin.html");
+?>
 </br></br>
 <ul class="mx-auto">
 <h3>Escola Alfredo</h3>

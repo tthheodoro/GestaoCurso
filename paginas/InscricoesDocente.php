@@ -5,9 +5,10 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <?php
+
 session_start();
 include ("../basedados/basedados.h");
-include ("../paginas/NavBar.html");?>
+include ("../paginas/NavBarDocente.html");?>
 
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
@@ -47,13 +48,12 @@ include ("../paginas/NavBar.html");?>
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['informacao'] . '</td>';
                                                 // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';  
-                                                echo '<a href="DocenteEditarInscricoes.php?IdInscricao=' . $row['IdInscricao'] . '"><button>Editar</button></a>';  
+                                                echo '<a href="DocenteEditarInscricoes.php?IdInscricao=' . $row['IdInscricao'] . '"><button>Editar</button></a>';
                                                 //FALTA FAZER
-                                                echo '<a><button>Apagar</button></a>';          
+                                                echo '<a href="AlunoEliminarDados.php?IdInscricao=' . $row['IdInscricao'] .'"><button>Apagar</button></a>';          
                                                 echo '</tr>';
                                                 echo '</td>';
                                             }
-                                            
                                         } else {
                                             echo '<tr><td colspan="5" style="border-right: 1px solid #ccc;">Nenhum resultado encontrado.</td></tr>';
                                         }

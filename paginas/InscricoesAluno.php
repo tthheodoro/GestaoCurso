@@ -4,10 +4,20 @@
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
+
+
 <?php
+
+
 session_start();
 include ("../basedados/basedados.h");
-include ("../paginas/NavBar.html");?>
+include ("../paginas/NavBarAluno.html");
+
+if(isset($_GET['mensagemerro'])) {
+    $mensagemerro = $_GET['mensagemerro'];
+    echo "<h2>$mensagemerro</h2> ";
+  }
+  ?>
 
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
@@ -38,13 +48,13 @@ include ("../paginas/NavBar.html");?>
                                             // Exibe os resultados
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['idCurso'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdCurso'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
                                                 // Botões de edição e exclusão
                                                 
                                                 echo '<td style="border-right: 1px solid #ccc;">';
-                                                echo '<a href="AlunoInscreverCurso.php?IdCurso=' . $row['idCurso'] . '"><button>Inscrever</button></a>';
+                                                echo '<a href="AlunoInscreverCurso.php?IdCurso=' . $row['IdCurso'] . '"><button>Inscrever</button></a>';
                                                 echo '</tr>';
                                                 echo '</td>';
                                             }

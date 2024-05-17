@@ -7,16 +7,17 @@
 
 <body>
 
-
- 
 <?php
-    session_start();
-    include ("../paginas/NavBarAluno.html");
-    include ("../basedados/basedados.h");
+session_start();
+include ("../basedados/basedados.h");
+include ("../paginas/NavBarDocente.html");
 ?>
 </br></br>
 <ul class="mx-auto">
-<h3>Dados Pessoais</h3>
+<h3>Gestão de Dados Pessoais</h3>
+ 
+
+
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
@@ -50,7 +51,7 @@
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Password'] . '</td>';
                                                 // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';
-                                                echo '<a href="AlunoEditarDados.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Editar</button></a>';
+                                                echo '<a href="DocenteEditarDadosPessoais.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Editar</button></a>';
                                                 echo '<a href="AlunoApagarDados.php?IdUtilizador=' . $row['Nome'] . '"><button>Apagar</button></a>';
                                                 echo '</tr>';
                                             }
@@ -74,9 +75,6 @@
         </div>
     </div>
 </section>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </ul>
 </body>
 </html>

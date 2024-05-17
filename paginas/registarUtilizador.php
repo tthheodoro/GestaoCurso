@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Prepare a consulta SQL para inserir os dados na tabela de usuários
         $sql = "INSERT INTO utilizadores (Nome, Password, Email, Morada) VALUES ('$Nome', '$Password', '$Email', '$Morada')";
-
+        
         if (mysqli_query($conn, $sql)) {
             // Registro bem-sucedido, redirecionar para a página de login
             header("Location: index.php");

@@ -7,7 +7,7 @@
 
 <body>
 <?php
-include("../paginas/NavBarAdmin.html");
+    include("../paginas/NavBarAdmin.html");
 ?>
 </br></br>
 <ul class="mx-auto">
@@ -17,7 +17,7 @@ include("../paginas/NavBarAdmin.html");
 session_start();
 include ("../basedados/basedados.h");?>
 
-<button type="button" class="btn btn-primary">Adicionar Novo</button>
+<a href="AdminCriarUtilizador.php"><button>Adicionar Novo</button></a>
 
 <script>
  function filterTable(tipo) {
@@ -62,7 +62,8 @@ include ("../basedados/basedados.h");?>
                                             <th scope="col" style="border-right: 1px solid #ccc;">Email</th>
                                             <th scope="col" style="border-right: 1px solid #ccc;">Password</th>
                                             <th scope="col" style="border-right: 1px solid #ccc;">tipoUtilizador</th>
-                                            <th scope="col" style="border-right: 1px solid #ccc;">Editar</th>
+                                            <th scope="col" style="border-right: 1px solid #ccc;">Aprovado</th>
+                                            <th scope="col" style="border-right: 1px solid #ccc;">Ações</th>
                                            
                                         </tr>
                                     </thead>
@@ -85,11 +86,12 @@ include ("../basedados/basedados.h");?>
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Email'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Password'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['tipoUtilizador'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Aprovado'] . '</td>'; 
                                                 // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';  
-                                                echo '<a href="AdminEditarUtilizador.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Ações</button></a>';
+                                                echo '<a href="AdminEditarUtilizador.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Editar</button></a>';
                                                 //FALTA FAZER
-                                                echo '<a><button>Apagar</button></a>';          
+                                                echo '<a href="AdminEliminarUtilizador.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Apagar</button></a>';          
                                                 echo '</tr>';
                                                 echo '</td>';
                                             }

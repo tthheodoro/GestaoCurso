@@ -5,18 +5,25 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 
+<?php
+
+
+
+include("../paginas/NavBarDocente.html");
+?>
 <body>
 
-
- 
-<?php
-    session_start();
-    include ("../paginas/NavBarAluno.html");
-    include ("../basedados/basedados.h");
-?>
 </br></br>
 <ul class="mx-auto">
-<h3>Dados Pessoais</h3>
+<h3>Cursos de Formação</h3>
+
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'CursosLecionadoDocente.php';">Lecionados</button>
+
+
+<?php
+include ("../basedados/basedados.h");
+?>
+
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
@@ -28,30 +35,29 @@
                                 <table id="tabela-cursos" class="table mb-0" style="border-collapse: collapse; width: 100%;">
                                     <thead>
                                     <tr style="border-bottom: 1px solid #ccc;">
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Password</th>
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Opções</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Descrição</th>
+                             
                                     </tr>
                                     </thead>
                                     <tbody> 
                                     <?php 
                                     try {
                                         // Exemplo de consulta SQL
-                                        $id = $_SESSION['IdUtilizador'];
-                                        $sql = "SELECT * FROM utilizadores WHERE IdUtilizador = $id";
+                                        $sql = "SELECT * FROM curso";
                                         // Executa a consulta
                                         $result = mysqli_query($conn, $sql);
+
                                         // Verifica se a consulta retornou resultados
                                         if ($result) {
                                             // Exibe os resultados
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdCurso'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Password'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
                                                 // Botões de edição e exclusão
-                                                echo '<td style="border-right: 1px solid #ccc;">';
-                                                echo '<a href="AlunoEditarDados.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Editar</button></a>';
-                                                echo '<a href="AlunoApagarDados.php?IdUtilizador=' . $row['Nome'] . '"><button>Apagar</button></a>';
                                                 echo '</tr>';
                                             }
                                             
@@ -62,7 +68,8 @@
                                         // Em caso de erro na conexão ou na consulta, exibe o erro
                                         echo '<tr><td colspan="5" style="border-right: 1px solid #ccc;">Erro na consulta: ' . $e->getMessage() . '</td></tr>';
                                     }
-                                    ?> 
+                                      ?> 
+
                                 </tbody> 
                                 </table>
                             </div>
@@ -75,8 +82,11 @@
     </div>
 </section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<?php 
+$conn = null;
+?>
 </ul>
+
 </body>
 </html>

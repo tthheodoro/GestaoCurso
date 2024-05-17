@@ -6,6 +6,9 @@
 </head>
 <?php
 session_start();
+
+
+
 include ("../basedados/basedados.h");
 include ("../paginas/NavBarDocente.html");
 $IdInscricao = $_GET['IdInscricao'];

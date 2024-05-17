@@ -7,18 +7,19 @@
 <body>
 
 <?php
-    session_start();
-    include ("../basedados/basedados.h");
-    include ("../paginas/NavBarAluno.html");
-    $IdUtilizador = $_GET['IdUtilizador'];
-    $sql = "SELECT * FROM utilizadores WHERE IdUtilizador=$IdUtilizador";
+session_start();
+include ("../basedados/basedados.h");
+include ("../paginas/NavBarDocente.html");
+$IdUtilizador = $_GET['IdUtilizador'];
+$sql = "SELECT * FROM utilizadores WHERE IdUtilizador=$IdUtilizador";
 
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+
 ?>
 <div>
     </br>
-    <form action="AtualizarDadosAluno.php" method="POST">
+    <form action="DocenteAtualizarDadosPessoais.php" method="POST">
         </br>
         <div class="form-group" hidden>
             <label for="IdUtilizador">Seu id:</label>

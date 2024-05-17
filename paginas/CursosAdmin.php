@@ -5,39 +5,21 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 
+<?php
+
+
+
+include("../paginas/NavBarAdmin.html");
+?>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">EAF</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor02">
-             <ul class="navbar-nav mx-auto">     
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Página Principal
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cursos.php">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">Entrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sobre.php">Sobre nós</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
 </br></br>
 <ul class="mx-auto">
 <h3>Cursos de Formação</h3>
 
 <?php
-include 'conexao.php';?>
+include ("../basedados/basedados.h");
+?>
 
 <button type="button" class="btn btn-primary">Adicionar Novo</button>
 
@@ -53,11 +35,10 @@ include 'conexao.php';?>
                                 <table id="tabela-cursos" class="table mb-0" style="border-collapse: collapse; width: 100%;">
                                     <thead>
                                     <tr style="border-bottom: 1px solid #ccc;">
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
+                                    <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Descrição</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Editar</th>
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Eliminar</th>
                                     </tr>
                                     </thead>
                                     <tbody> 
@@ -66,20 +47,23 @@ include 'conexao.php';?>
                                         // Exemplo de consulta SQL
                                         $sql = "SELECT * FROM curso";
                                         // Executa a consulta
-                                        $result = $conn->query($sql);
+                                        $result = mysqli_query($conn, $sql);
 
                                         // Verifica se a consulta retornou resultados
-                                        if ($result && $result->rowCount() > 0) {
+                                        if ($result) {
                                             // Exibe os resultados
-                                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                            while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['idCurso'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdCurso'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
                                                 // Botões de edição e exclusão
-                                                echo '<td style="border-right: 1px solid #ccc;"><a href="PaginaUtilizadorAdminEditar.php?id=' . $row['idCurso'] . '"><img src="pen.svg"/></a></td>';
-                                                echo '<td><a href="PaginaUtilizadorAdminEliminar.php?id=' . $row['idCurso'] . '"><img src="trash.svg"/></a></td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">';  
+                                                echo '<a href="AdminEditarCurso.php?IdCurso=' . $row['IdCurso'] . '"><button>Ações</button></a>';
+                                                //FALTA FAZER
+                                                echo '<a><button>Apagar</button></a>';          
                                                 echo '</tr>';
+                                                echo '</td>';
                                             }
                                             
                                         } else {
@@ -103,21 +87,6 @@ include 'conexao.php';?>
     </div>
 </section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    function filterTable(category) {
-        var rows = document.querySelectorAll("tbody tr");
-        rows.forEach(function(row) {
-            var course = row.querySelector("td:nth-child(2)").innerText; // assuming course name is in the second column
-            if (category === 'todos' || course === category) {
-                row.style.display = "";
-            } else {
-                row.style.display = "none";
-            }
-        });
-    }
-</script>
 
 <?php 
 $conn = null;

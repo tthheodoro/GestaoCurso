@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // Define a mensagem de erro se as credenciais forem inválidas
-            $mensagem_erro = 'Credenciais inválidas. Por favor, verifique seu nome de usuário e senha.';
+            $mensagem_erro = 'Credenciais inválidas. Por favor, verifique seu nome de utilizador e senha.';
         }
     }
 }
