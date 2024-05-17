@@ -4,60 +4,36 @@
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
-<?php
-session_start();
-
-
-
-include ("../basedados/basedados.h");
-include ("../paginas/NavBarAdmin.html");
+<body>
+    <?php
+        session_start();
+        include ("../basedados/basedados.h");
+        include ("../paginas/NavBarAdmin.html");
     ?>
     <div>
     </br>
-    <form method="POST" action="AdminRecebeDadosCurso.php">
-        <div class="form-group">
+    <form method="POST" action="AdminAtualizarCurso.php">
+        <div class="form-group" hidden>
             <label for="id">Id:</label>
-            <?php
-                $id = $row ['IdUtilizador'];
-                echo '<input type="text" class="form-control" id="IdUtilizador" name="id" value="' . $id . '" readonly>';      
-            ?>
-        </div> 
+            <input type="text" class="form-control" id="IdCurso" name="id">
+        </div>
         </br>
         <div>
             <label for="example" class="form-label mt-4">Nome</label>
-            <input type="Nome" name="Nome" class="form-control" id="example" <?php echo "value = \"". $row ['Nome']."\"";?> aria-describedby="emailHelp" placeholder="Nome">
+            <input type="text" name="Nome" class="form-control" id="example" placeholder="Nome" required>
         </div>
         <div>
-            <label for="example" class="form-label mt-4">Morada</label>
-            <input type="Morada" name="Morada" class="form-control" id="example" <?php echo "value = \"". $row ['Morada']."\"";?> aria-describedby="emailHelp" placeholder="Morada">
+            <label for="example" class="form-label mt-4">Descrição</label>
+            <input type="textarea" name="Descricao" class="form-control" id="example" placeholder="Descricao" required>
         </div>
         <div>
-            <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
-            <input type="Email" name="Email" class="form-control" id="exampleInputEmail1" <?php echo "value = \"". $row ['Email']."\"";?> aria-describedby="emailHelp" placeholder="Email">
-        </div>
-        <div>
-            <label for="exampleInputEmail1" class="form-label mt-4">Password</label>
-            <input type="Password" name="Password" class="form-control" id="exampleInputEmail1" <?php echo "value = \"". $row ['Password']."\"";?> aria-describedby="emailHelp" placeholder="Password">
-        </div>
-        <div>
-            <label for="exampleInputEmail1" class="form-label mt-4">Tipo de Utilizador</label>
-            <label for="exampleInputEmail1" class="form-label mt-4">1-Aluno / 2-Docente / 3-Admin</label>
-            <input type="tipoUtilizador" name="tipoUtilizador" class="form-control" id="exampleInputEmail1" <?php echo "value = \"". $row ['tipoUtilizador']."\"";?> aria-describedby="emailHelp" placeholder="Email">
-        </div>
-        <div>
-            <label for="exampleInputEmail1" class="form-label mt-4">Conta Aprovada</label>
-            <label for="exampleInputEmail1" class="form-label mt-4">1-Sim / 0-Não</label>
-            <input type="Aprovado" name="Aprovado" class="form-control" id="exampleInputEmail1" <?php echo "value = \"". $row ['Aprovado']."\"";?> aria-describedby="emailHelp" placeholder="Email">
-        </div>
-        <div class="">
-        <input type="hidden" name="IdUtilizador" value="<?php echo $IdUtilizador; ?>">
+            <label for="example" class="form-label mt-4">Vagas Disponíveis</label>
+            <input type="textarea" name="Vagas_disponiveis" class="form-control" id="example" placeholder="Vagas Disponíveis" required>
         </div>
     </br>
-    <form method="GET" action="DocenteAtualizarInscricao.php">
-    <!-- Campos para selecionar a inscrição a ser editada -->
+
     <button type="submit" class="btn btn-primary">Enviar</button>
 
-    </form>
     </form>
 </div>
 </body>

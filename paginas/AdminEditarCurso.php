@@ -28,11 +28,15 @@ $row = mysqli_fetch_array($result);
         </br>
         <div>
             <label for="example" class="form-label mt-4">Nome</label>
-            <input type="Nome" name="Nome" class="form-control" id="example" <?php echo "value = \"". $row ['Nome']."\"";?> aria-describedby="emailHelp" placeholder="Nome">
+            <input type="text" name="Nome" class="form-control" id="example" <?php echo "value = \"". $row ['Nome']."\"";?> placeholder="Nome">
         </div>
         <div>
             <label for="example" class="form-label mt-4">Descricao</label>
-            <input type="Descricao" name="Descricao" class="form-control" id="example" <?php echo "value = \"". $row ['Descricao']."\"";?> aria-describedby="emailHelp" placeholder="Morada">
+            <input type="text" name="Descricao" class="form-control" id="example" <?php echo "value = \"". $row ['Descricao']."\"";?> placeholder="Descricao">
+        </div>
+        <div>
+            <label for="example" class="form-label mt-4">Vagas Disponíveis</label>
+            <input type="text" name="Vagas_disponiveis" class="form-control" id="example" <?php echo "value = \"". $row ['Vagas_disponiveis']."\"";?> placeholder="Vagas">
         </div>
     </br>
     <button type="submit" class="btn btn-primary">Enviar</button>

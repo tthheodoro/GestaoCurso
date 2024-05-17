@@ -21,7 +21,7 @@ include("../paginas/NavBarAdmin.html");
 include ("../basedados/basedados.h");
 ?>
 
-<button type="button" class="btn btn-primary">Adicionar Novo</button>
+<a href="AdminCriarCurso.php"><button>Adicionar Novo</button></a>
 
 
 <section class="intro mt-5">
@@ -38,7 +38,8 @@ include ("../basedados/basedados.h");
                                     <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Descrição</th>
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Editar</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Vagas Disponíveis</th>
+                                        <th scope="col" style="border-right: 1px solid #ccc;">Ações</th>
                                     </tr>
                                     </thead>
                                     <tbody> 
@@ -57,11 +58,12 @@ include ("../basedados/basedados.h");
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['IdCurso'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
+                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['Vagas_disponiveis'] . '</td>';
                                                 // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';  
-                                                echo '<a href="AdminEditarCurso.php?IdCurso=' . $row['IdCurso'] . '"><button>Ações</button></a>';
+                                                echo '<a href="AdminEditarCurso.php?IdCurso=' . $row['IdCurso'] . '"><button>Editar</button></a>';
                                                 //FALTA FAZER
-                                                echo '<a><button>Apagar</button></a>';          
+                                                echo '<a href="AdminEliminarCurso.php?IdCurso=' . $row['IdCurso'] . '"><button>Eliminar</button></a>';          
                                                 echo '</tr>';
                                                 echo '</td>';
                                             }

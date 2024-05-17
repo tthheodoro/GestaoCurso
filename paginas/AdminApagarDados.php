@@ -18,7 +18,7 @@ $row = mysqli_fetch_array($result);
 ?>
 <div>
     </br>
-    <form action="AlunoEliminarDados.php" method="POST">
+    <form action="AdminEliminarDados.php" method="POST">
         </br>
         <div class="form-group">
             <label for="IdIdUtilizador">Seu id:</label>

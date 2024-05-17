@@ -9,7 +9,7 @@
 <?php
 session_start();
 include ("../basedados/basedados.h");
-include ("../paginas/NavBarDocente.html");
+include ("../paginas/NavBarAdmin.html");
 ?>
 </br></br>
 <ul class="mx-auto">
@@ -49,7 +49,7 @@ include ("../paginas/NavBarDocente.html");
                                                 // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';
                                                 echo '<a href="AdminEditarDadosPessoais.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Editar</button></a>';
-                                                //echo '<a href="AlunoApagarDados.php?IdUtilizador=' . $row['Nome'] . '"><button>Apagar</button></a>';
+                                                echo '<a href="AdminApagarDados.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Apagar</button></a>';
                                                 echo '</tr>';
                                             }
                                             

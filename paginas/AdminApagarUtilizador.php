@@ -16,5 +16,4 @@ if (mysqli_affected_rows($conn) == 1 ) {
     die();
 }
 
-
 ?> 

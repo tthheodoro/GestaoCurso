@@ -51,7 +51,7 @@
                                                 // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';
                                                 echo '<a href="AlunoEditarDados.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Editar</button></a>';
-                                                echo '<a href="AlunoApagarDados.php?IdUtilizador=' . $row['Nome'] . '"><button>Apagar</button></a>';
+                                                echo '<a href="AlunoApagarDados.php?IdUtilizador=' . $row['IdUtilizador'] . '"><button>Apagar</button></a>';
                                                 echo '</tr>';
                                             }
                                             
