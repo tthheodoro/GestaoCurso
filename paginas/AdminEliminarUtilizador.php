@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 3) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -7,7 +11,6 @@
 <body>
 
 <?php
-session_start();
 include ("../basedados/basedados.h");
 include ("../paginas/NavBarAdmin.html");
 $IdUtilizador = $_GET['IdUtilizador'];
@@ -33,6 +36,8 @@ $row = mysqli_fetch_array($result);
 </div>
 </body>
 </html>
-
-</body>
-</html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

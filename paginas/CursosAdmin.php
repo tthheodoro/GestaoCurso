@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 3) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -97,3 +101,8 @@ $conn = null;
 
 </body>
 </html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

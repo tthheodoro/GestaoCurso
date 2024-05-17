@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 3) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -14,7 +18,6 @@
 <h3>Cursos de Formação</h3>
 
 <?php
-session_start();
 include ("../basedados/basedados.h");?>
 
 <a href="AdminCriarUtilizador.php"><button>Adicionar Novo</button></a>
@@ -127,3 +130,8 @@ $conn = null;
 
 </body>
 </html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

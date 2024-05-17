@@ -1,5 +1,9 @@
 
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 1) {
+?>
 <html>
   
 <head>
@@ -117,8 +121,6 @@
 </head>
 <body>
 <?php
-session_start();
-
 //include ("../paginas/segurancaAluno.php");
 include ("../basedados/basedados.h");
 include ("../paginas/NavBarAluno.html");
@@ -224,3 +226,8 @@ if(isset($_GET['mensagemerro'])) {
 
 </body>
 </html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

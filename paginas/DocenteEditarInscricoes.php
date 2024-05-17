@@ -1,14 +1,14 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 2) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <?php
-session_start();
-
-
-
 include ("../basedados/basedados.h");
 include ("../paginas/NavBarDocente.html");
 $IdInscricao = $_GET['IdInscricao'];
@@ -46,12 +46,11 @@ $row = mysqli_fetch_array($result);
     </form>
     </form>
 </div>
-
-
-
-</body>
-
-</html>
-
 </body>
 </html>
+
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

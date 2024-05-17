@@ -1,11 +1,15 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 3) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <?php
-    session_start();
+
 
     include ("../basedados/basedados.h");
     include ("../paginas/NavBarAdmin.html");
@@ -64,3 +68,8 @@
 </div>
 </body>
 </html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

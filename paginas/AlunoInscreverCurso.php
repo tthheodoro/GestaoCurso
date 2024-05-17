@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+       
+<!DOCTYPE html>  
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 1) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -7,9 +12,11 @@
 <body>
 <?php
 
+
 include("../paginas/NavBarAluno.html");
 ?>
 <div>
+    
     </br>
     <form method="POST" action="ReceberInscricaoDocente.php">
         <div class="form-group">
@@ -38,6 +45,8 @@ include("../paginas/NavBarAluno.html");
 </div>
 </body>
 </html>
-
-</body>
-</html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 2) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -6,7 +10,6 @@
 </head>
 <body>
 <?php
-session_start();
 
 include ("../paginas/NavBarDocente.html");?>
 </br></br>
@@ -43,4 +46,9 @@ include ("../paginas/NavBarDocente.html");?>
 
 </body>
 </html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>
 

@@ -1,15 +1,19 @@
+
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 2) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
+<body>
 <?php
-
-session_start();
 include ("../basedados/basedados.h");
-include ("../paginas/NavBarDocente.html");?>
-
+    include ("../paginas/NavBarDocente.html");
+?>
 <section class="intro mt-5">
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
@@ -28,17 +32,13 @@ include ("../paginas/NavBarDocente.html");?>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Informação</th>                             
                                     </tr>
                                     </thead>
-                                    <tbody> 
-                                    <?php                                   
+                                    <tbody>
+                                    <?php
                                     try {
-                                        // Exemplo de consulta SQL
                                         $sql = "SELECT * FROM inscricao";
-                                        // Executa a consulta
                                         $result = mysqli_query($conn, $sql);
 
-                                        // Verifica se a consulta retornou resultados
                                         if ($result) {
-                                            // Exibe os resultados
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['IdCurso'] . '</td>';
@@ -46,28 +46,23 @@ include ("../paginas/NavBarDocente.html");?>
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['IdInscricao'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['email'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['informacao'] . '</td>';
-                                                // Botões de edição e exclusão
                                                 echo '<td style="border-right: 1px solid #ccc;">';  
                                                 echo '<a href="DocenteEditarInscricoes.php?IdInscricao=' . $row['IdInscricao'] . '"><button>Editar</button></a>';
-                                                //FALTA FAZER
-                                                echo '<a href="AlunoEliminarDados.php?IdInscricao=' . $row['IdInscricao'] .'"><button>Apagar</button></a>';          
-                                                echo '</tr>';
+                                                echo '<a href="AlunoEliminarDados.php?IdInscricao=' . $row['IdInscricao'] . '"><button>Apagar</button></a>';
                                                 echo '</td>';
+                                                echo '</tr>';
                                             }
                                         } else {
                                             echo '<tr><td colspan="5" style="border-right: 1px solid #ccc;">Nenhum resultado encontrado.</td></tr>';
                                         }
                                     } catch (PDOException $e) {
-                                        // Em caso de erro na conexão ou na consulta, exibe o erro
                                         echo '<tr><td colspan="5" style="border-right: 1px solid #ccc;">Erro na consulta: ' . $e->getMessage() . '</td></tr>';
                                     }
-                                      ?> 
-                                      
-                                </tbody> 
+                                    ?> 
+                                    </tbody> 
                                 </table>
                             </div>
-                            <section class="intro mt-3">
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -77,5 +72,11 @@ include ("../paginas/NavBarDocente.html");?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</html>
 </body>
+</html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>
+

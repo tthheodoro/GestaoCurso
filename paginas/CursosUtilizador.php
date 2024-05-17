@@ -6,7 +6,7 @@
 </head>
 
 <?php
-include("../paginas/NavBarAluno.html");
+include("../paginas/NavBar.html");
 ?>
 <body>
 
@@ -29,7 +29,7 @@ include ("../basedados/basedados.h");
                                 <table id="tabela-cursos" class="table mb-0" style="border-collapse: collapse; width: 100%;">
                                     <thead>
                                     <tr style="border-bottom: 1px solid #ccc;">
-                                        <th scope="col" style="border-right: 1px solid #ccc;">Id</th>
+                                        
                                         <th scope="col" style="border-right: 1px solid #ccc;">Nome</th>
                                         <th scope="col" style="border-right: 1px solid #ccc;">Descrição</th>
                              
@@ -48,7 +48,7 @@ include ("../basedados/basedados.h");
                                             // Exibe os resultados
                                             while ($row = mysqli_fetch_array($result)) {
                                                 echo '<tr style="border-bottom: 1px solid #ccc;">'; 
-                                                echo '<td style="border-right: 1px solid #ccc;">' . $row['IdCurso'] . '</td>';
+                                            
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Nome'] . '</td>';
                                                 echo '<td style="border-right: 1px solid #ccc;">' . $row['Descricao'] . '</td>';
                                                 // Botões de edição e exclusão

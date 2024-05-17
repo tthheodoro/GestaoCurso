@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 1) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -7,7 +11,7 @@
 <body>
 
 <?php
-    session_start();
+ 
     include ("../basedados/basedados.h");
     include ("../paginas/NavBarAluno.html");
     $IdUtilizador = $_GET['IdUtilizador'];
@@ -41,6 +45,8 @@
 </div>
 </body>
 </html>
-
-</body>
-</html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

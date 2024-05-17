@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 3) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -40,6 +44,8 @@ $row = mysqli_fetch_array($result);
 </div>
 </body>
 </html>
-
-</body>
-</html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

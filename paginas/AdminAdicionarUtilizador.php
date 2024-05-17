@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 1) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
@@ -74,8 +78,10 @@ if (isset($_GET['IdUtilizador']) && !empty($_GET['IdUtilizador'])) {
     </form>
     </form>
 </div>
-
-
-
 </body>
 </html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>

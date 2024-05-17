@@ -1,16 +1,16 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if ($_SESSION['tipoUtilizador'] == 1) {
+?>
 <html>
 <head>
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
-
 <body>
-
-
- 
 <?php
-    session_start();
+
     include ("../paginas/NavBarAluno.html");
     include ("../basedados/basedados.h");
 ?>
@@ -80,3 +80,8 @@
 </ul>
 </body>
 </html>
+<?php
+} else { 
+    header("Location: index.php");
+        }  
+?>
