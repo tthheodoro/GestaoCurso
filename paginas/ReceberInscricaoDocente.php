@@ -11,9 +11,6 @@ $informacao = $_POST['informacao'];
 $sql_verificar_inscricao = "SELECT * FROM inscricao WHERE IdCurso = $IdCurso AND IdUtilizador = $IdUtilizador";
 $result_verificar_inscricao = mysqli_query($conn, $sql_verificar_inscricao);
 
-if (!$result_verificar_inscricao) {
-    echo("Inscrição já existente");
-}
 
 if (mysqli_num_rows($result_verificar_inscricao) > 0) {
     // O aluno já está inscrito neste curso

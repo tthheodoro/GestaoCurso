@@ -72,11 +72,27 @@
                 flex: 1 1 100%; /* Ajuste flexível para 1 coluna em telas ainda menores */
             }
         }
+        .erro {
+            color: red;
+            font-weight: bold;
+            font-size: 24px; /* Increase font size */
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 <?php include("../paginas/NavBar.html"); ?>
+
 <img src="curso1.jpg" alt="Imagem" class="imagem-horizontal">
+
+<?php
+session_start();
+if (isset($_SESSION['mensagem']) && !empty($_SESSION['mensagem'])) {
+    echo '<div class="erro">' . $_SESSION['mensagem'] . '</div>';
+    unset($_SESSION['mensagem']);
+}
+?>
 <br>  
 <h2 class="mensagem">Escola Alfredo</h2>
 <h3 class="mensagem2">Junte-se a nós</h3>

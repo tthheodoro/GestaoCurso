@@ -31,14 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: PrincipalAdmin.php");
                 }
                 exit();
-            } else {
-                // Se o usuário não estiver aprovado, exibir mensagem de erro
-                header("Location: index.php?mensagem=Conta%20ainda%20n%C3%A3o%20aprovada.%20Por%20favor%2C%20aguarde.");
+            }  else {
+                // If the user is not approved, display an error message
+                $_SESSION['mensagem'] = "Conta ainda não aprovada. Por favor, aguarde.";
+                header("Location: index.php");
                 exit();
             }
         } else {
-            // Define a mensagem de erro se as credenciais forem inválidas
-            $mensagem_erro = 'Credenciais inválidas. Por favor, verifique seu nome de utilizador e senha.';
+            $_SESSION['mensagem'] = "Credenciais inválidas. Por favor, verifique seu nome de utilizador e senha.";
+            header("Location: index.php");
+            exit();
         }
     }
 }
