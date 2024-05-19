@@ -1,54 +1,102 @@
 <!DOCTYPE html>
-<?php
-session_start();
-if ($_SESSION['tipoUtilizador'] == 3) {
-?>
 <html>
 <head>
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        .curso-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .mensagem {
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .textos {
+            font-size: 20px;
+            text-align: left;
+        }
+        .mensagem2 {
+            font-size: 24px;
+            text-align: center;
+        }
+        .imagem-horizontal {
+            width: 100%;
+            height: 300px;
+            display: block;
+            object-fit: cover;
+        }
+        .coluna {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .coluna img {
+            max-width: 100%;
+            height: auto;
+        }
+        .learn-courses {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .box-wrap {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            flex: 1 1 calc(33.3333% - 15px); /* Ajuste flexível para 3 colunas */
+            box-sizing: border-box;
+        }
+        @media (max-width: 992px) {
+            .box-wrap {
+                flex: 1 1 calc(50% - 15px); /* Ajuste flexível para 2 colunas em telas menores */
+            }
+        }
+        @media (max-width: 768px) {
+            .box-wrap {
+                flex: 1 1 100%; /* Ajuste flexível para 1 coluna em telas ainda menores */
+            }
+        }
+        .erro {
+            color: red;
+            font-weight: bold;
+            font-size: 24px; /* Increase font size */
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+<?php include("../paginas/NavBarAdmin.html"); ?>
+
+<img src="curso1.jpg" alt="Imagem" class="imagem-horizontal">
+
 <?php
-include("../paginas/NavBarAdmin.html");
+session_start();
+if (isset($_SESSION['mensagem']) && !empty($_SESSION['mensagem'])) {
+    echo '<div class="erro">' . $_SESSION['mensagem'] . '</div>';
+    unset($_SESSION['mensagem']);
+}
 ?>
-</br></br>
-<ul class="mx-auto">
-<h3>Escola Alfredo</h3>
-
-<div class="card mb-3">
-  <h2 class="card-header">Administração</h2>
-  <div class="card-body">
-  </div>
-  <svg xmlns="C:\xampp\htdocs\cursos\img/curso.jpg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-    <image xlink:href="C:\xampp\htdocs\cursos\img/curso.jpg" width="100%" height="100%" />
-</svg>
-
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
- 
-  
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title">Card title</h4>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+<br>  
+<h2 class="mensagem">Escola Alfredo</h2>
+<h3 class="mensagem2">Administração</h3>
 
 
 </body>
 </html>
-<?php
-} else { 
-    header("Location: index.php");
-        }  
-?>
-

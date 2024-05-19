@@ -11,7 +11,7 @@ if ($_SESSION['tipoUtilizador'] == 2) {
 <body>
 
 <?php
-session_start();
+
 include ("../basedados/basedados.h");
 include ("../paginas/NavBarAluno.html");
 $IdUtilizador= $_GET['IdUtilizador'];
