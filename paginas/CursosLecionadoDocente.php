@@ -40,7 +40,7 @@ include("../paginas/NavBarDocente.html");
                                     <tbody> 
                         <?php
                         // Iniciar a sessão
-                        session_start();
+                        
 
                         // Incluir o arquivo de conexão ao banco de dados
                         include ("../basedados/basedados.h");

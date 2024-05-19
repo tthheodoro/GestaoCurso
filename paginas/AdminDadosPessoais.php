@@ -11,7 +11,6 @@ if ($_SESSION['tipoUtilizador'] == 3) {
 <body>
 
 <?php
-session_start();
 include ("../basedados/basedados.h");
 include ("../paginas/NavBarAdmin.html");
 ?>
